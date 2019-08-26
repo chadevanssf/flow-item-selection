@@ -1,0 +1,8 @@
+<design:component label="Item Selector Datatable">
+    <design:attribute name="objectName" label="Object Name" description="Object Name, API version (with __c)" required="true"/>
+    <design:attribute name="fieldNames" label="Object Field Names" description="Field Names for the List, comma separated, API version (with __c)" required="true"/>
+    <design:attribute name="dataColumns" label="DataTable Columns" description="DataTable Columns"/>
+    <design:supportedFormFactors>
+        <design:supportedFormFactor type="Large"/>
+    </design:supportedFormFactors>
+</design:component>

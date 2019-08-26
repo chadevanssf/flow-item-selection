@@ -1,0 +1,36 @@
+<!--
+    ItemSelectorDataTable - Lightning Flow Screen Component
+    Wrapper for Lightning DataTable, by Chad Evans
+
+    Created to display a datatable in a Flow screen and handle the selection
+-->
+<aura:component implements="lightning:availableForFlowScreens" controller="ItemSelectorListController" access="global">
+    <!-- public -->
+    <aura:attribute name="objectName" type="String" required="true" access="global"/>
+    <aura:attribute name="fieldNames" type="String" required="true" access="global"/>
+    <aura:attribute name="dataColumns" type="SObject[]" access="global"/>
+    
+    <!-- private -->
+    <aura:attribute name="title" type="String" default="Item Selection" access="private"/>
+    <aura:attribute name="iconName" type="String" default="utility:search" access="private"/>
+    <aura:attribute name="results" type="Object" access="private"/>
+    <aura:attribute name="selectedResults" type="Object" access="private"/>
+    <aura:attribute name="columns" type="List" access="private"/>
+    <aura:attribute name="fieldTypes" type="Object" access="private"/>
+    
+    <!-- events -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <lightning:card title="{!v.title}" iconName="{!v.iconName}">
+        <p class="slds-p-horizontal_small">
+            <ui:scrollerWrapper>
+                <lightning:datatable aura:id="listing"
+                                     data="{!v.results}"
+                                     columns="{!v.columns}"
+                                     keyField="id"
+                                     maxRowSelection="1"
+                                     onrowselection="{!c.handleSelection}" />
+            </ui:scrollerWrapper>
+        </p>
+    </lightning:card>
+</aura:component>
